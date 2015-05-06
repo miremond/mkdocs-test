@@ -1,0 +1,7 @@
+site_name: Slimpay Documentation
+pages:
+    - [index.md, Getting started]
+    - [api.md, API]
+theme: united
+theme_dir: slimpay_theme
+site_favicon: favicon.ico
