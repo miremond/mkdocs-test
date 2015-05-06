@@ -2,6 +2,8 @@ site_name: Slimpay Documentation
 pages:
     - [index.md, Getting started]
     - [api.md, API]
+    - [support/faq.md, Support, FAQ]
+    - [support/troubleshooting.md, Support, Troubleshooting]
 theme: united
 theme_dir: slimpay_theme
 site_favicon: favicon.ico
