@@ -65,6 +65,23 @@
                     </li>
                 
                 
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="support/faq/">FAQ</a>
+                            </li>
+                        
+                            <li >
+                                <a href="support/troubleshooting/">Troubleshooting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
                 </ul>
             
 
@@ -105,7 +122,7 @@
         
             <li><a href="#where-do-i-start">Where do I start?</a></li>
         
-            <li><a href="#support">Support</a></li>
+            <li><a href="#need-help">Need help?</a></li>
         
     
     </ul>
@@ -114,14 +131,42 @@
 
 <h1 id="getting-started">Getting started</h1>
 <h2 id="introduction">Introduction</h2>
+<p>This documentation gives a technical overview of the Slimpay infrastructure allowing you to perform direct debit, mandate signature and more...</p>
 <h2 id="slimpay-resources">Slimpay resources</h2>
+<ul>
+<li><strong>Merchant</strong> uses SlimPay EPT to collect signed mandates from its customers and manage its payment orders. The merchant is the creditor in the payment transaction.</li>
+<li><strong>Customer</strong> or <strong>User</strong> uses the solution to sign a mandate for a specific merchant. He is considered as a debtor in the payment transaction and a customer of the merchant.</li>
+<li><strong>EPT</strong> stands for Electronic Payment Terminal. SlimPay provides an EPT for mandate signatures and direct debit payments. </li>
+</ul>
 <h2 id="sequence-diagrams">Sequence diagrams</h2>
+<p>The merchant installs SlimPay EPT on its web server. The module integrates as easily as a credit card EPT with the merchant systems. </p>
+<p>SlimPay EPT will handle the debiting of customers holding a bank account in Europe. Once a mandate has been signed, SlimPay debits the customer upon request of the merchant. The debited amounts can be paid directly to the merchant's account in the bank of his choice. </p>
+<p>The figure below summarizes the signature process and the relations between Customer/Merchant/SlimPay:</p>
+<p><img alt="Screenshot" src="./img/slimpay-flow.png" /></p>
 <h2 id="where-do-i-start">Where do I start?</h2>
 <h3 id="guides">Guides</h3>
 <h3 id="api">API</h3>
-<h2 id="support">Support</h2>
-<h3 id="faq">FAQ</h3>
-<h3 id="troubleshooting">Troubleshooting</h3></div>
+<p>We strongly encourage you to use our official libraries for navigating and using the Slimpay REST API.</p>
+<h4 id="php">PHP</h4>
+<p>Install from source:</p>
+<pre><code>git clone git@github.com:SlimPay/client-api-rest-php.git
+</code></pre>
+<h4 id="nodejs">Node.js</h4>
+<p>Install with npm:</p>
+<pre><code>npm install xxx
+</code></pre>
+<p>Check out our <a href="#">Node docs</a> or <a href="https://github.com/SlimPay/client-api-rest-node">view source on Github</a>.</p>
+<h4 id="java">Java</h4>
+<p>Install with Maven:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;com.slimpay&lt;/groupId&gt;
+  &lt;artifactId&gt;client-api-rest-java&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Check out our <a href="#">Java docs</a> or <a href="https://github.com/SlimPay/client-api-rest-java">view source on Github</a>.</p>
+<h2 id="need-help">Need help?</h2>
+<p>Please have a look at our <a href="support/faq/">FAQ</a> and <a href="support/troubleshooting/">Troubleshooting</a> pages.</p></div>
         </div>
 
         
