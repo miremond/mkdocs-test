@@ -120,11 +120,24 @@
         
             <li><a href="#sequence-diagrams">Sequence diagrams</a></li>
         
-            <li><a href="#main-use-cases">Main use cases</a></li>
+    
+        <li class="main "><a href="#main-use-cases">Main use cases</a></li>
         
-            <li><a href="#where-do-i-start">Where do I start?</a></li>
+            <li><a href="#direct-debit-payment">Direct debit payment</a></li>
         
-            <li><a href="#need-help">Need help?</a></li>
+            <li><a href="#direct-debit-payment-combined-with-card-payment">Direct debit payment combined with card payment</a></li>
+        
+            <li><a href="#card-payment-only">Card payment only</a></li>
+        
+    
+        <li class="main "><a href="#where-do-i-start">Where do I start?</a></li>
+        
+            <li><a href="#guides">Guides</a></li>
+        
+            <li><a href="#api">API</a></li>
+        
+    
+        <li class="main "><a href="#need-help">Need help?</a></li>
         
     
     </ul>
@@ -146,8 +159,8 @@
 <p>SlimPay API will handle the debiting of customers holding a bank account in Europe. Once a mandate has been signed, SlimPay debits the customer upon request of the merchant. The debited amounts can be paid directly to the merchant's account in the bank of his choice. </p>
 <p>The figure below summarizes the signature process and the relations between Customer/Merchant/SlimPay:</p>
 <p><img alt="Screenshot" src="./img/slimpay-flow.png" /></p>
-<h2 id="main-use-cases">Main use cases</h2>
-<h3 id="direct-debit-payment">Direct debit payment</h3>
+<h1 id="main-use-cases">Main use cases</h1>
+<h2 id="direct-debit-payment">Direct debit payment</h2>
 <p>The figure below describes the signature Direct Debit Payment process:</p>
 <p><img alt="Screenshot" src="./img/direct-debit-sequence.png" /></p>
 <p>There are 3 variants of this use case:</p>
@@ -165,13 +178,14 @@
 <p>For this type of request, the merchant has to provide three additional mandatory data fields:</p>
 <ul>
 <li>frequency of payment plan (for example: monthly, yearly)</li>
-<li>date on which the merchant intends to start the first debit amount to debit</li>
+<li>date on which the merchant intends to start the first debit</li>
+<li>amount to debit</li>
 </ul>
 <p>Once the signature has been carried out successfully, the payment plan will be generated and executed automatically according to the data provided previously by the merchant.</p>
 <p>To stop the payment plan, the merchant has to transfer the un-subscription file to SlimPay via SFTP. The format of this file should be compliant with the format required by SlimPay. </p>
 </li>
 </ul>
-<h3 id="direct-debit-payment-combined-with-card-payment">Direct debit payment combined with card payment</h3>
+<h2 id="direct-debit-payment-combined-with-card-payment">Direct debit payment combined with card payment</h2>
 <p>This solution is dedicated to merchants intending to debit their customers by credit card for the first payment instead of a direct debit, the following payments being done in direct debit mode, or the merchants wishing to propose card payments for customers not having a bank account within SEPA.</p>
 <p>The figure below describes the signature Direct Debit combined with Card Payment process:</p>
 <p><img alt="Screenshot" src="./img/direct-debit-card-sequence.png" /></p>
@@ -180,20 +194,19 @@
 <li>
 <p><strong>Signature + Immediate card payment (Authorization or Payment)</strong></p>
 <p>The signature process in this case is slightly different from the previous one.  The merchant can choose the type of card payment operation between <strong><em>authorization</em></strong> and <strong><em>payment</em></strong>. The <strong><em>authorization</em></strong> type will only generate an authorization to debit a requested amount; no real debit will be made. On the other hand the <strong><em>payment</em></strong> type will generate a real debit. </p>
-<p>According to Figure 1, at the end of the second step a card authorization request is sent. If the response is positive, the customer continues to the next step. If not, the process is stopped and the customer is redirected to the merchant's website. If the merchant chooses the payment operation, a request for debit will be sent once the signature has been carried out successfully.
+<p>According to the diagram, if choosen by the merchant, a card authorization request is sent. If the response is positive, the customer continues to the next step. If not, the process is stopped and the customer is redirected to the merchant's website. If the merchant chooses the payment operation, a request for debit will be sent once the signature has been carried out successfully.
 The authorization of card payment is transferred to the merchant with the transaction data. The execution of these card transactions can be done by SlimPay or by the merchant upon request. </p>
 </li>
 <li>
 <p><strong>Signature + Multiple Card payment (Alias)</strong></p>
-<p>The idea here is to provide an alternative to the Direct Debit for the customers who do not have an account in the SEPA or have an account in a bank that is not SEPA “Reachable”. This feature does actually not need a separate request type. It is fully compatible with the Direct Debit requests described in chapter 2.2. SlimPay automatically detects that a SEPA mandate cannot be signed and redirects the customer to the credit card page. A credit card alias is created and stored. Any future debits sent by the merchant will automatically be processed using this alias. To benefit from this feature the merchant only needs to ask for activation by SlimPay and provide the same mandatory data as the one described in Section 2.2..</p>
+<p>The idea here is to provide an alternative to the Direct Debit for the customers who do not have an account in the SEPA or have an account in a bank that is not SEPA “Reachable”. This feature is fully compatible with the Direct Debit requests. SlimPay automatically detects that a SEPA mandate cannot be signed and redirects the customer to the credit card page. A credit card alias is created and stored. Any future debits sent by the merchant will automatically be processed using this alias. To benefit from this feature the merchant only needs to ask for activation by SlimPay.</p>
 </li>
 </ul>
-<h3 id="card-payment-only">Card payment only</h3>
-<p>Merchants generally use this solution as a complement to a subscription paid by direct debits for payment of one-time options or for credit recovering in case of direct debit returns.
-The request type is “CardPayment” and the only mandatory information provided by the merchant  is the first name and last name of the customer.</p>
-<h2 id="where-do-i-start">Where do I start?</h2>
-<h3 id="guides">Guides</h3>
-<h3 id="api">API</h3>
+<h2 id="card-payment-only">Card payment only</h2>
+<p>Merchants generally use this solution as a complement to a subscription paid by direct debits for payment of one-time options or for credit recovering in case of direct debit returns.</p>
+<h1 id="where-do-i-start">Where do I start?</h1>
+<h2 id="guides">Guides</h2>
+<h2 id="api">API</h2>
 <p>We strongly encourage you to use our official libraries for navigating and using the Slimpay REST API.</p>
 <h4 id="php">PHP</h4>
 <p>Install from source:</p>
@@ -213,7 +226,7 @@ The request type is “CardPayment” and the only mandatory information provide
 &lt;/dependency&gt;
 </code></pre>
 <p>Check out our <a href="#">Java docs</a> or <a href="https://github.com/SlimPay/client-api-rest-java">view source on Github</a>.</p>
-<h2 id="need-help">Need help?</h2>
+<h1 id="need-help">Need help?</h1>
 <p>Please have a look at our <a href="support/faq/">FAQ</a> and <a href="support/troubleshooting/">Troubleshooting</a> pages.</p></div>
         </div>
 
